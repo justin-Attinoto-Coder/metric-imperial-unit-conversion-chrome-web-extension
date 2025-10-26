@@ -3,20 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help - Unit Converter</title>
+    <title>Help - Unit Converter Pro</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        h1 { color: #333; }
-        p { line-height: 1.6; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+            text-align: center;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+            to { text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6); }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #fff, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin: 20px 0 10px 0;
+            color: #ffd700;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .example {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ffd700;
+        }
+
+        .links {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .links h4 {
+            margin-top: 0;
+            color: #87ceeb;
+        }
+
+        a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            color: white;
+        }
+
+        .highlight {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
-    <h1>Help Section</h1>
-    <p>This unit converter helps you convert between metric and imperial units.</p>
-    <p><strong>New Feature:</strong> Use the dropdown to select a specific unit to convert from. Choose "All Units" to see all conversions, or select a specific unit (meters, feet, liters, etc.) to focus on that conversion.</p>
-    <p>Enter a number in the input field and click "Convert" to see conversions for length, volume, mass, and temperature.</p>
-    <p>All results are rounded to three decimal places.</p>
-    <p>Use the "Clear" button to reset the input and hide results.</p>
-    <p>You can also press Enter after typing the number to convert.</p>
+    <div class="container">
+        <h1>📐 Unit Converter Pro - Complete Guide</h1>
+
+        <div class="section">
+            <h2>🚀 Getting Started</h2>
+            <p>Welcome to your <span class="highlight">state-of-the-art unit conversion tool</span>! This extension makes converting between metric and imperial units effortless and beautiful.</p>
+
+            <h3>How to Use:</h3>
+            <ul>
+                <li><strong>Basic Mode:</strong> Select "All Units" from the dropdown and enter any number</li>
+                <li><strong>Specific Mode:</strong> Choose a specific unit (meters, feet, etc.) from the dropdown</li>
+                <li><strong>Convert:</strong> Click the Convert button or press Enter</li>
+                <li><strong>Clear:</strong> Use the Clear button to reset everything</li>
+            </ul>
+
+            <div class="example">
+                <strong>Example:</strong> Enter "20" with "All Units" selected → See all conversions. Enter "30" with "kilos" selected → Focus on mass conversions only.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📏 Length Conversions</h2>
+            <p>Convert between meters (metric) and feet (imperial) with precision.</p>
+
+            <h3>Conversion Formulas:</h3>
+            <ul>
+                <li><strong>1 meter = 3.28084 feet</strong></li>
+                <li><strong>1 foot = 0.3048 meters</strong></li>
+            </ul>
+
+            <div class="example">
+                <strong>Real-world example:</strong> A basketball hoop is 3.05 meters high, which equals 10 feet.
+            </div>
+
+            <div class="links">
+                <h4>📚 Learn More:</h4>
+                <p><a href="https://en.wikipedia.org/wiki/Metre" target="_blank">What is a Meter? (Wikipedia)</a></p>
+                <p><a href="https://en.wikipedia.org/wiki/Foot_(unit)" target="_blank">What is a Foot? (Wikipedia)</a></p>
+                <p><a href="https://www.nist.gov/pml/weights-and-measures/metric-si-prefixes" target="_blank">NIST: Official Measurement Standards</a></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🫧 Volume Conversions</h2>
+            <p>Convert between liters (metric) and gallons (imperial) for liquids and volumes.</p>
+
+            <h3>Conversion Formulas:</h3>
+            <ul>
+                <li><strong>1 liter = 0.264172 gallons</strong></li>
+                <li><strong>1 gallon = 3.78541 liters</strong></li>
+            </ul>
+
+            <div class="example">
+                <strong>Real-world example:</strong> A standard bottle of soda is 2 liters, which equals about 0.528 gallons.
+            </div>
+
+            <div class="links">
+                <h4>📚 Learn More:</h4>
+                <p><a href="https://en.wikipedia.org/wiki/Litre" target="_blank">What is a Liter? (Wikipedia)</a></p>
+                <p><a href="https://en.wikipedia.org/wiki/Gallon" target="_blank">What is a Gallon? (Wikipedia)</a></p>
+                <p><a href="https://www.convertunits.com/from/liter/to/gallon" target="_blank">Interactive Converter (ConvertUnits)</a></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2⚖️ Mass/Weight Conversions</h2>
+            <p>Convert between kilograms (metric) and pounds (imperial) for weight measurements.</p>
+
+            <h3>Conversion Formulas:</h3>
+            <ul>
+                <li><strong>1 kilogram = 2.20462 pounds</strong></li>
+                <li><strong>1 pound = 0.453592 kilograms</strong></li>
+            </ul>
+
+            <div class="example">
+                <strong>Real-world example:</strong> An average adult weighs about 70 kilograms, which equals 154.324 pounds.
+            </div>
+
+            <div class="links">
+                <h4>📚 Learn More:</h4>
+                <p><a href="https://en.wikipedia.org/wiki/Kilogram" target="_blank">What is a Kilogram? (Wikipedia)</a></p>
+                <p><a href="https://en.wikipedia.org/wiki/Pound_(mass)" target="_blank">What is a Pound? (Wikipedia)</a></p>
+                <p><a href="https://www.nist.gov/pml/weights-and-measures/si-units-mass" target="_blank">NIST: Mass Measurement Standards</a></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌡️ Temperature Conversions</h2>
+            <p>Convert between Celsius (metric) and Fahrenheit (imperial) temperature scales.</p>
+
+            <h3>Conversion Formulas:</h3>
+            <ul>
+                <li><strong>°F = (°C × 9/5) + 32</strong></li>
+                <li><strong>°C = (°F - 32) × 5/9</strong></li>
+            </ul>
+
+            <div class="example">
+                <strong>Real-world examples:</strong><br>
+                • Water freezes at 0°C (32°F)<br>
+                • Water boils at 100°C (212°F)<br>
+                • Room temperature is about 20°C (68°F)
+            </div>
+
+            <div class="links">
+                <h4>📚 Learn More:</h4>
+                <p><a href="https://en.wikipedia.org/wiki/Celsius" target="_blank">Celsius Scale (Wikipedia)</a></p>
+                <p><a href="https://en.wikipedia.org/wiki/Fahrenheit" target="_blank">Fahrenheit Scale (Wikipedia)</a></p>
+                <p><a href="https://www.weather.gov/om/tempconvert.pdf" target="_blank">NOAA: Temperature Conversion Guide</a></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 Pro Tips & Features</h2>
+            <h3>Advanced Features:</h3>
+            <ul>
+                <li><strong>Unit Selection:</strong> Choose specific units for focused conversions</li>
+                <li><strong>Precision:</strong> All results rounded to 3 decimal places</li>
+                <li><strong>Keyboard Shortcuts:</strong> Press Enter to convert quickly</li>
+                <li><strong>Auto-focus:</strong> Dropdown changes trigger automatic conversion</li>
+            </ul>
+
+            <h3>Common Conversion Mistakes to Avoid:</h3>
+            <ul>
+                <li>Don't confuse mass (weight) with volume</li>
+                <li>Remember temperature conversions are not linear</li>
+                <li>Use appropriate precision for your needs</li>
+                <li>Double-check large number conversions</li>
+            </ul>
+
+            <div class="links">
+                <h4>🔗 Additional Resources:</h4>
+                <p><a href="https://www.metric-conversions.org/" target="_blank">Metric Conversions - Complete Reference</a></p>
+                <p><a href="https://www.convert-me.com/" target="_blank">Convert-Me - Advanced Unit Converter</a></p>
+                <p><a href="https://en.wikipedia.org/wiki/Conversion_of_units" target="_blank">Wikipedia: Unit Conversion Guide</a></p>
+                <p><a href="https://www.nist.gov/pml/weights-and-measures" target="_blank">NIST: Official Weights & Measures</a></p>
+            </div>
+        </div>
+
+        <a href="#" onclick="window.close()" class="back-link">← Back to Converter</a>
+    </div>
 </body>
 </html>
