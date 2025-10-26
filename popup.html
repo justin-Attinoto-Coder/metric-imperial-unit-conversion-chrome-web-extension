@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Metric ↔ Imperial Converter</h1>
+        <input type="number" id="inputNumber" placeholder="Enter a number" min="0" step="any">
+        <div class="buttons">
+            <button id="convertBtn">Convert</button>
+            <button id="clearBtn">Clear</button>
+        </div>
+        <div id="results" class="hidden">
+            <div class="conversion length">
+                <h3>Length</h3>
+                <p id="lengthMetric"></p>
+                <p id="lengthImperial"></p>
+            </div>
+            <div class="conversion volume">
+                <h3>Volume</h3>
+                <p id="volumeMetric"></p>
+                <p id="volumeImperial"></p>
+            </div>
+            <div class="conversion mass">
+                <h3>Mass</h3>
+                <p id="massMetric"></p>
+                <p id="massImperial"></p>
+            </div>
+            <div class="conversion temperature">
+                <h3>Temperature</h3>
+                <p id="tempMetric"></p>
+                <p id="tempImperial"></p>
+            </div>
+        </div>
+        <p class="help">Stuck? <a href="#" id="helpLink">Visit the help section</a></p>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
