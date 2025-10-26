@@ -147,3 +147,21 @@ document.getElementById('helpLink').addEventListener('click', function(e) {
     e.preventDefault();
     chrome.tabs.create({ url: chrome.runtime.getURL('help.html') });
 });
+
+// Theme switching functionality
+document.getElementById('iconTheme').addEventListener('change', function() {
+    const selectedTheme = this.value;
+    const iconPath = `icon${selectedTheme === 'default' ? '' : '-' + selectedTheme}.svg`;
+
+    // Save preference (in a real extension, you'd use chrome.storage)
+    localStorage.setItem('iconTheme', selectedTheme);
+
+    // Show reload message
+    alert(`Icon theme changed to ${selectedTheme}!\n\nTo see the new icon, please:\n1. Right-click the extension icon\n2. Select "Manage extensions"\n3. Click the refresh button for this extension\n\nThe new icon will appear: ${iconPath}`);
+});
+
+// Load saved theme on popup open
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('iconTheme') || 'default';
+    document.getElementById('iconTheme').value = savedTheme;
+});

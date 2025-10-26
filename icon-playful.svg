@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4ecdc4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#45b7d1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd93d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff8c42;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="64" cy="64" r="60" fill="url(#bgGrad)" stroke="#fff" stroke-width="3"/>
+
+  <!-- Cute Calculator -->
+  <rect x="35" y="30" width="58" height="45" rx="8" fill="url(#iconGrad)"/>
+  <rect x="40" y="35" width="48" height="8" rx="4" fill="#fff" opacity="0.9"/>
+  <!-- Screen -->
+  <rect x="42" y="48" width="44" height="20" rx="3" fill="#000" opacity="0.8"/>
+  <text x="64" y="60" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#00ff88">1.609</text>
+
+  <!-- Cute buttons -->
+  <circle cx="48" cy="75" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="58" cy="75" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="68" cy="75" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="78" cy="75" r="3" fill="#fff" opacity="0.8"/>
+
+  <!-- Conversion symbols -->
+  <text x="64" y="95" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">km ↔ mi</text>
+  <text x="64" y="108" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#fff">Convert!</text>
+
+  <!-- Heart sparkles -->
+  <path d="M20 20 C20 15, 25 15, 25 20 C25 15, 30 15, 20 25 C10 15, 15 15, 15 20 C15 15, 20 15, 20 20" fill="#ff6b9d" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <path d="M108 25 C108 20, 113 20, 113 25 C113 20, 118 20, 108 30 C98 20, 103 20, 103 25 C103 20, 108 20, 108 25" fill="#ff6b9d" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="1.5s" repeatCount="indefinite"/>
+  </path>
+</svg>
