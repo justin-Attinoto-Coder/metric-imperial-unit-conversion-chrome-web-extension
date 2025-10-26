@@ -136,26 +136,6 @@
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
         }
 
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 12px 25px;
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            color: white;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-            cursor: pointer;
-        }
-
-        .back-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
-            color: white;
-        }
-
         .highlight {
             background: rgba(255, 215, 0, 0.1);
             padding: 2px 6px;
@@ -292,6 +272,7 @@
                 <li><strong>Precision:</strong> All results rounded to 3 decimal places</li>
                 <li><strong>Keyboard Shortcuts:</strong> Press Enter to convert quickly</li>
                 <li><strong>Auto-focus:</strong> Dropdown changes trigger automatic conversion</li>
+                <li><strong>Icon Themes:</strong> Customize the extension icon (see theme selector below)</li>
             </ul>
 
             <h3>Common Conversion Mistakes to Avoid:</h3>
@@ -311,13 +292,11 @@
             </div>
         </div>
 
-        <a href="#" id="backLink" class="back-link">← Back to Converter</a>
+        <div class="section">
+            <h2>🚪 How to Close This Help</h2>
+            <p><strong>To return to the converter:</strong> Simply close this tab using your browser's close button (✕) or press Ctrl+W (Cmd+W on Mac).</p>
+            <p>The help section opens in a new tab so you can reference it while using the converter.</p>
+        </div>
     </div>
-    <script>
-        document.getElementById('backLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.close();
-        });
-    </script>
 </body>
 </html>
