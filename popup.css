@@ -47,7 +47,7 @@ h1 {
 }
 
 input {
-    width: 85%;
+    width: 60%;
     padding: 12px;
     margin: 15px 0;
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -68,6 +68,37 @@ input:focus {
     border-color: #ffd700;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     background: rgba(255, 255, 255, 0.2);
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+#unitSelect {
+    width: 35%;
+    padding: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 1.1em;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#unitSelect:focus {
+    border-color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#unitSelect option {
+    background: rgba(40, 40, 40, 0.9);
+    color: white;
 }
 
 .buttons {

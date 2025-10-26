@@ -9,7 +9,20 @@
 <body>
     <div class="container">
         <h1>Metric ↔ Imperial Converter</h1>
-        <input type="number" id="inputNumber" placeholder="Enter a number" min="0" step="any">
+        <div class="input-section">
+            <select id="unitSelect">
+                <option value="all">All Units</option>
+                <option value="meters">Meters</option>
+                <option value="feet">Feet</option>
+                <option value="liters">Liters</option>
+                <option value="gallons">Gallons</option>
+                <option value="kilos">Kilograms</option>
+                <option value="pounds">Pounds</option>
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+            </select>
+            <input type="number" id="inputNumber" placeholder="Enter a number" min="0" step="any">
+        </div>
         <div class="buttons">
             <button id="convertBtn">Convert</button>
             <button id="clearBtn">Clear</button>

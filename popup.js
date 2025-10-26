@@ -5,9 +5,17 @@ document.getElementById('inputNumber').addEventListener('keypress', function(e) 
         convert();
     }
 });
+document.getElementById('unitSelect').addEventListener('change', function() {
+    const selectedUnit = this.value;
+    if (selectedUnit !== 'all') {
+        convert();
+    }
+});
 
 function convert() {
     const input = parseFloat(document.getElementById('inputNumber').value);
+    const selectedUnit = document.getElementById('unitSelect').value;
+
     if (isNaN(input) || input < 0) {
         alert('Please enter a valid positive number.');
         return;
@@ -18,6 +26,21 @@ function convert() {
     const literToGallon = 0.264172;
     const kgToPound = 2.20462;
 
+    // Hide all sections first
+    document.querySelectorAll('.conversion').forEach(el => el.style.display = 'none');
+
+    if (selectedUnit === 'all') {
+        // Show all conversions
+        showAllConversions(input, meterToFeet, literToGallon, kgToPound);
+    } else {
+        // Show specific conversion
+        showSpecificConversion(input, selectedUnit, meterToFeet, literToGallon, kgToPound);
+    }
+
+    document.getElementById('results').classList.remove('hidden');
+}
+
+function showAllConversions(input, meterToFeet, literToGallon, kgToPound) {
     // Length
     const feet = (input * meterToFeet).toFixed(3);
     const meters = (input * (1 / meterToFeet)).toFixed(3);
@@ -34,7 +57,7 @@ function convert() {
     const fahrenheit = (input * 9/5 + 32).toFixed(3);
     const celsius = ((input - 32) * 5/9).toFixed(3);
 
-    // Display
+    // Display all
     document.getElementById('lengthMetric').textContent = `${input} meters = ${feet} feet`;
     document.getElementById('lengthImperial').textContent = `${input} feet = ${meters} meters`;
 
@@ -47,12 +70,77 @@ function convert() {
     document.getElementById('tempMetric').textContent = `${input}°C = ${fahrenheit}°F`;
     document.getElementById('tempImperial').textContent = `${input}°F = ${celsius}°C`;
 
-    document.getElementById('results').classList.remove('hidden');
+    document.querySelectorAll('.conversion').forEach(el => el.style.display = 'block');
+}
+
+function showSpecificConversion(input, unit, meterToFeet, literToGallon, kgToPound) {
+    let resultText = '';
+
+    switch(unit) {
+        case 'meters':
+            const feet = (input * meterToFeet).toFixed(3);
+            resultText = `${input} meters = ${feet} feet`;
+            document.querySelector('.conversion.length').style.display = 'block';
+            document.getElementById('lengthMetric').textContent = resultText;
+            document.getElementById('lengthImperial').textContent = `${input} feet = ${(input / meterToFeet).toFixed(3)} meters`;
+            break;
+        case 'feet':
+            const meters = (input / meterToFeet).toFixed(3);
+            resultText = `${input} feet = ${meters} meters`;
+            document.querySelector('.conversion.length').style.display = 'block';
+            document.getElementById('lengthMetric').textContent = `${input} meters = ${(input * meterToFeet).toFixed(3)} feet`;
+            document.getElementById('lengthImperial').textContent = resultText;
+            break;
+        case 'liters':
+            const gallons = (input * literToGallon).toFixed(3);
+            resultText = `${input} liters = ${gallons} gallons`;
+            document.querySelector('.conversion.volume').style.display = 'block';
+            document.getElementById('volumeMetric').textContent = resultText;
+            document.getElementById('volumeImperial').textContent = `${input} gallons = ${(input / literToGallon).toFixed(3)} liters`;
+            break;
+        case 'gallons':
+            const liters = (input / literToGallon).toFixed(3);
+            resultText = `${input} gallons = ${liters} liters`;
+            document.querySelector('.conversion.volume').style.display = 'block';
+            document.getElementById('volumeMetric').textContent = `${input} liters = ${(input * literToGallon).toFixed(3)} gallons`;
+            document.getElementById('volumeImperial').textContent = resultText;
+            break;
+        case 'kilos':
+            const pounds = (input * kgToPound).toFixed(3);
+            resultText = `${input} kilos = ${pounds} pounds`;
+            document.querySelector('.conversion.mass').style.display = 'block';
+            document.getElementById('massMetric').textContent = resultText;
+            document.getElementById('massImperial').textContent = `${input} pounds = ${(input / kgToPound).toFixed(3)} kilograms`;
+            break;
+        case 'pounds':
+            const kg = (input / kgToPound).toFixed(3);
+            resultText = `${input} pounds = ${kg} kilograms`;
+            document.querySelector('.conversion.mass').style.display = 'block';
+            document.getElementById('massMetric').textContent = `${input} kilos = ${(input * kgToPound).toFixed(3)} pounds`;
+            document.getElementById('massImperial').textContent = resultText;
+            break;
+        case 'celsius':
+            const fahrenheit = (input * 9/5 + 32).toFixed(3);
+            resultText = `${input}°C = ${fahrenheit}°F`;
+            document.querySelector('.conversion.temperature').style.display = 'block';
+            document.getElementById('tempMetric').textContent = resultText;
+            document.getElementById('tempImperial').textContent = `${input}°F = ${((input - 32) * 5/9).toFixed(3)}°C`;
+            break;
+        case 'fahrenheit':
+            const celsius = ((input - 32) * 5/9).toFixed(3);
+            resultText = `${input}°F = ${celsius}°C`;
+            document.querySelector('.conversion.temperature').style.display = 'block';
+            document.getElementById('tempMetric').textContent = `${input}°C = ${(input * 9/5 + 32).toFixed(3)}°F`;
+            document.getElementById('tempImperial').textContent = resultText;
+            break;
+    }
 }
 
 function clear() {
     document.getElementById('inputNumber').value = '';
+    document.getElementById('unitSelect').value = 'all';
     document.getElementById('results').classList.add('hidden');
+    document.querySelectorAll('.conversion').forEach(el => el.style.display = 'block');
 }
 
 document.getElementById('helpLink').addEventListener('click', function(e) {
