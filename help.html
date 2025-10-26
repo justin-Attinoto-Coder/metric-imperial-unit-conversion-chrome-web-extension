@@ -147,6 +147,7 @@
             font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            cursor: pointer;
         }
 
         .back-link:hover {
@@ -310,7 +311,7 @@
             </div>
         </div>
 
-        <a href="#" onclick="window.close()" class="back-link">← Back to Converter</a>
+        <a href="#" onclick="event.preventDefault(); window.close();" class="back-link">← Back to Converter</a>
     </div>
 </body>
 </html>
