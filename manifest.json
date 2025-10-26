@@ -13,8 +13,5 @@
     "32": "icon.svg",
     "48": "icon.svg",
     "128": "icon.svg"
-  },
-  "content_security_policy": {
-    "extension_pages": "script-src 'self' 'unsafe-inline'; object-src 'self'"
   }
 }

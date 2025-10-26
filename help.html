@@ -311,7 +311,13 @@
             </div>
         </div>
 
-        <a href="#" onclick="event.preventDefault(); window.close();" class="back-link">← Back to Converter</a>
+        <a href="#" id="backLink" class="back-link">← Back to Converter</a>
     </div>
+    <script>
+        document.getElementById('backLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.close();
+        });
+    </script>
 </body>
 </html>
